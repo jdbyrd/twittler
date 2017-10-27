@@ -14,31 +14,58 @@
 
         var index = streams.home.length - 1;
         var counter = 0;
+        var userCounter = 0;
         var $section = $('<section></section');
         $section.appendTo('body');
-        $section.addClass('tweeter')
+        $section.addClass('tweeter');
+
+        var tweetInterval = setInterval(newTwit, 1000);
+
 
         function newTwit(){
           for(x = counter; counter < streams.home.length; counter++){
             var tweet = streams.home[counter];
-            var className = tweet.user;
+            var userName = tweet.user;
             var $tweet = $('<div></div>');
             var $tweetName = $('<h4></h4>');
             var $tweetMsg = $('<p></p>');
-            $tweet.addClass(className);
+            $tweetName.data({'user': userName});
             $tweetName.text('@' + tweet.user);
             $tweetMsg.text(': ' + tweet.message + ' ' + tweet.created_at);
             $tweet.prependTo($section);
             $tweetName.appendTo($tweet);
             $tweetMsg.appendTo($tweet);
-            $('h4').on('click', function(){
-              $('section').css({'visibility' : 'hidden'})
-            });
+            $('h4').on('click', showUser);
 
           }
         }
 
-        var immediate = setInterval(newTwit, 1000);
+        function showUser(){
+          var user = $(this).data('user');
+          $('section.tweeter').remove()
+          clearInterval();
+          var $section = $('<section></section');
+          $section.appendTo('body');
+          $section.addClass('user');
+          var userInterval = setInterval(newUserTwit, 1000);
+
+          function newUserTwit(){
+            for(x = userCounter; userCounter < streams.users[user].length; userCounter++){
+              var userTweet = streams.users[user][userCounter];
+              var $userTweet = $('<div></div>');
+              var $userTweetName = $('<h4></h4>');
+              var $userTweetMsg = $('<p></p>');
+              $userTweetName.text('@' + user);
+              $userTweetMsg.text(': ' + userTweet.message + ' ' + userTweet.created_at);
+              $userTweet.prependTo($section);
+              $userTweetName.appendTo($userTweet);
+              $userTweetMsg.appendTo($userTweet);
+            }
+          }
+        }
+
+
+
 
      /*   function newTwit(){
           var newTweet = streams.home[counter];
