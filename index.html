@@ -7,32 +7,56 @@
   <body>
     <script>
 
+
       $(document).ready(function(){
         var $body = $('body');
         $body.html('');
 
         var index = streams.home.length - 1;
         var counter = 0;
-
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at);
-          $tweet.appendTo($body);
-          index -= 1;
-          counter++;
-        }
-
-        var immediate = setInterval(newTwit, 700);
+        var $section = $('<section></section');
+        $section.appendTo('body');
+        $section.addClass('tweeter')
 
         function newTwit(){
-          var newTweet = streams.home[counter];
-          var $newTweet = $('<div></div>');
-          $newTweet.text('@' + newTweet.user + ': ' + newTweet.message + ' ' + newTweet.created_at);
-          $newTweet.prependTo($body);
-          counter++
+          for(x = counter; counter < streams.home.length; counter++){
+            var tweet = streams.home[counter];
+            var className = tweet.user;
+            var $tweet = $('<div></div>');
+            var $tweetName = $('<h4></h4>');
+            var $tweetMsg = $('<p></p>');
+            $tweet.addClass(className);
+            $tweetName.text('@' + tweet.user);
+            $tweetMsg.text(': ' + tweet.message + ' ' + tweet.created_at);
+            $tweet.prependTo($section);
+            $tweetName.appendTo($tweet);
+            $tweetMsg.appendTo($tweet);
+            $('h4').on('click', function(){
+              $('section').css({'visibility' : 'hidden'})
+            });
+
+          }
         }
 
+        var immediate = setInterval(newTwit, 1000);
+
+     /*   function newTwit(){
+          var newTweet = streams.home[counter];
+          var className = newTweet.user;
+          var $newTweet = $('<div></div>');
+          var $newTweetName = $('<h4></h4>');
+          var $newTweetMsg = $('<p></p>');
+          $newTweet.addClass(className);
+          $newTweetName.text('@' + newTweet.user);
+          $newTweetMsg.text(': ' + newTweet.message + ' ' + newTweet.created_at);
+          $newTweet.prependTo($body);
+          $newTweetName.appendTo($newTweet);
+          $newTweetMsg.appendTo($newTweet);
+          counter++
+        }
+      */
+
+        
 
 
 
