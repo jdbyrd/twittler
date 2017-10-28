@@ -26,33 +26,35 @@
         var $userFeed = $('.UserFeed');
         var $userHeader = $('.UserHeader');
         $userFeed.hide();
-        var index = streams.home.length - 1;
-        var counter = 0;
-        var $section = $('<section></section');
-        $section.appendTo('body');
-        $section.addClass('tweeter container');
+        startTwit();
+        
 
-        newTwit();
-        var tweetInterval = setInterval(newTwit, 3000);
+        function startTwit(){
 
+          var counter = 0;
+          var $section = $('<section></section');
+          $section.appendTo('body');
+          $section.addClass('tweeter container');
+          newTwit();
+          var tweetInterval = setInterval(newTwit, 1000);
 
-        function newTwit(){
-          for(x = counter; counter < streams.home.length; counter++){
-            var tweet = streams.home[counter];
-            var userName = tweet.user;
-            var $tweet = $('<div></div>');
-            var $tweetName = $('<h4></h4>');
-            $tweet.addClass('Tweet');
-            $tweetName.addClass('TweetName');
-            var $tweetMsg = $('<p></p>');
-            $tweetName.data({'user': userName});
-            $tweetName.text('@' + tweet.user);
-            $tweetMsg.text(': ' + tweet.message + ' ' + tweet.created_at);
-            $tweet.prependTo($section);
-            $tweetName.appendTo($tweet);
-            $tweetMsg.appendTo($tweet);
-            $('.TweetName').on('click', showUser);
-
+          function newTwit(){
+            for(x = counter; counter < streams.home.length; counter++){
+              var tweet = streams.home[counter];
+              var userName = tweet.user;
+              var $tweet = $('<div></div>');
+              var $tweetName = $('<h4></h4>');
+              $tweet.addClass('Tweet');
+              $tweetName.addClass('TweetName');
+              var $tweetMsg = $('<p></p>');
+              $tweetName.data({'user': userName});
+              $tweetName.text('@' + tweet.user);
+              $tweetMsg.text(': ' + tweet.message + ' ' + tweet.created_at + 'Counter' + counter);
+              $tweet.prependTo($section);
+              $tweetName.appendTo($tweet);
+              $tweetMsg.appendTo($tweet);
+              $('h4').on('click', showUser);
+            }
           }
         }
 
@@ -77,7 +79,7 @@
               var $userTweetMsg = $('<p></p>');
               $userTweet.addClass('Tweet');
               $userTweetName.text('@' + user);
-              $userTweetMsg.text(': ' + userTweet.message + ' ' + userTweet.created_at);
+              $userTweetMsg.text(': ' + userTweet.message + ' ' + userTweet.created_at + 'COUNTER' + userCounter);
               $userTweet.prependTo($newSection);
               $userTweetName.appendTo($userTweet);
               $userTweetMsg.appendTo($userTweet);
@@ -86,11 +88,10 @@
         }
 
         function goBackToHome(){
-          $('section.user').remove();
+          $('section').remove();
           userCounter = 0;
           $userFeed.hide();
-          $section.appendTo('body');
-          newTwit();
+          startTwit();
         }
 
       });
