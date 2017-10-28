@@ -65,7 +65,7 @@
           $newSection.addClass('user container');
           newUserTwit();
           var userInterval = setInterval(newUserTwit, 3000);
-          $userHeader.text('Feed of @' + user);
+          $userHeader.text('@' + user + '\'s feed');
           $userFeed.show();
           $('.UserButton').on('click', goBackToHome);
 
