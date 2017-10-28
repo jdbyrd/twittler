@@ -78,18 +78,19 @@ header{
 }
 
 .UserButton{
+	color: white;
 	font-size: 12px;
-	background: grey;
-	text-decoration: underline;
+	background: #293f50;
 	display: inline-block;
 	margin: 5px 0px 0px 20px;
 	padding: 8px 8px 8px 8px;
-	border: 4px solid black;
+	border: 2px solid white;
 	border-radius: 5px;
 }
 
 .UserButton:hover{
-	color: white;
+	color: black;
+	background-color: white;
 }
 
 p, h4{
@@ -115,4 +116,5 @@ h4{
 
 .TweetName:hover{
 	text-decoration: underline;
+	color: grey;
 }
