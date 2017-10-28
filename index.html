@@ -49,7 +49,7 @@
               var $tweetMsg = $('<p></p>');
               $tweetName.data({'user': userName});
               $tweetName.text('@' + tweet.user);
-              $tweetMsg.text(': ' + tweet.message + ' ' + tweet.created_at + 'Counter' + counter);
+              $tweetMsg.text(': ' + tweet.message + ' ' + tweet.created_at);
               $tweet.prependTo($section);
               $tweetName.appendTo($tweet);
               $tweetMsg.appendTo($tweet);
@@ -79,7 +79,7 @@
               var $userTweetMsg = $('<p></p>');
               $userTweet.addClass('Tweet');
               $userTweetName.text('@' + user);
-              $userTweetMsg.text(': ' + userTweet.message + ' ' + userTweet.created_at + 'COUNTER' + userCounter);
+              $userTweetMsg.text(': ' + userTweet.message + ' ' + userTweet.created_at);
               $userTweet.prependTo($newSection);
               $userTweetName.appendTo($userTweet);
               $userTweetMsg.appendTo($userTweet);
