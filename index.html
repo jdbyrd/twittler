@@ -36,7 +36,7 @@
           $section.appendTo('body');
           $section.addClass('tweeter container');
           newTwit();
-          var tweetInterval = setInterval(newTwit, 1000);
+          var tweetInterval = setInterval(newTwit, 3000);
 
           function newTwit(){
             for(x = counter; counter < streams.home.length; counter++){
@@ -53,6 +53,8 @@
               $tweet.prependTo($section);
               $tweetName.appendTo($tweet);
               $tweetMsg.appendTo($tweet);
+              $tweet.hide();
+              $tweet.fadeIn(2000);
               $('h4').on('click', showUser);
             }
           }
@@ -68,7 +70,7 @@
           newUserTwit();
           var userInterval = setInterval(newUserTwit, 3000);
           $userHeader.text('@' + user + '\'s feed');
-          $userFeed.show();
+          $userFeed.slideDown(600);
           $('.UserButton').on('click', goBackToHome);
 
           function newUserTwit(){
@@ -83,6 +85,9 @@
               $userTweet.prependTo($newSection);
               $userTweetName.appendTo($userTweet);
               $userTweetMsg.appendTo($userTweet);
+              $userTweet.hide();
+              $userTweet.fadeIn(2000);
+              $('h4').on('click', showUser);
             }
           }
         }
@@ -90,7 +95,7 @@
         function goBackToHome(){
           $('section').remove();
           userCounter = 0;
-          $userFeed.hide();
+          $userFeed.slideUp(600);
           startTwit();
         }
 
