@@ -91,6 +91,7 @@ header{
 .UserButton:hover{
 	color: black;
 	background-color: white;
+	cursor: pointer;
 }
 
 p, h4{
@@ -117,4 +118,5 @@ h4{
 .TweetName:hover{
 	text-decoration: underline;
 	color: grey;
+	cursor: pointer;
 }
