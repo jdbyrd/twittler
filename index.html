@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="main.css">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <script src="moment.js"></script>
   </head>
   <body>
     
@@ -47,12 +48,16 @@
               $tweet.addClass('Tweet');
               $tweetName.addClass('TweetName');
               var $tweetMsg = $('<p></p>');
+              var $tweetTime = $('<p></p>');
+              $tweetTime.addClass('TweetTime');
               $tweetName.data({'user': userName});
               $tweetName.text('@' + tweet.user);
-              $tweetMsg.text(': ' + tweet.message + ' ' + tweet.created_at);
+              $tweetMsg.text(': ' + tweet.message);
+              $tweetTime.text(moment(tweet.created_at).fromNow())
               $tweet.prependTo($section);
               $tweetName.appendTo($tweet);
               $tweetMsg.appendTo($tweet);
+              $tweetTime.appendTo($tweet);
               $tweet.hide();
               $tweet.fadeIn(2000);
               $('h4').on('click', showUser);
@@ -79,12 +84,16 @@
               var $userTweet = $('<div></div>');
               var $userTweetName = $('<h4></h4>');
               var $userTweetMsg = $('<p></p>');
+              var $userTweetTime = $('<p></p>');
+              $userTweetTime.addClass('TweetTime');
               $userTweet.addClass('Tweet');
               $userTweetName.text('@' + user);
-              $userTweetMsg.text(': ' + userTweet.message + ' ' + userTweet.created_at);
+              $userTweetMsg.text(': ' + userTweet.message);
+              $userTweetTime.text(moment(userTweet.created_at).fromNow())
               $userTweet.prependTo($newSection);
               $userTweetName.appendTo($userTweet);
               $userTweetMsg.appendTo($userTweet);
+              $userTweetTime.appendTo($userTweet);
               $userTweet.hide();
               $userTweet.fadeIn(2000);
               $('h4').on('click', showUser);
