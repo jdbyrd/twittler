@@ -18,16 +18,16 @@
       <p class = "UserButton Button">Click Here To Go Back To Home Feed</p>
     </div>
 
-    <div class = startButton>
+    <div class = "startButton container">
       <p class = "Button" id = "startTweeting">Click Here To Start Twitting</p>
     </div>
 
-    <div class = 'NameEntry'>
+    <div class = 'NameEntry container'>
       <input id = "Username" placeholder = "Username Here"></input>
       <div class = "Button" id = "UsernameButton">Enter</div>
     </div>
 
-    <div class = 'TweetButton'>
+    <div class = 'TweetButton container'>
       <input id = "tweet"></input>
       <div id = "TweetButton" class = "Button">Tweet This</div>
     </div>
@@ -63,6 +63,7 @@
         $('#TweetButton').on('click', function(){
           var input = $('input#tweet').val();
           writeTweet(input);
+          $('div.TweetButton').hide().fadeIn(400);
         });
 
         startTwit();

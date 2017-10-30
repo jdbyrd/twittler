@@ -82,7 +82,7 @@ header{
 	font-size: 12px;
 	background: #293f50;
 	display: inline-block;
-	margin: 5px 0px 0px 20px;
+	margin: 15px 0px 0px 20px;
 	padding: 8px 8px 8px 8px;
 	border: 2px solid white;
 	border-radius: 5px;
@@ -125,4 +125,8 @@ h4{
 	font-size: 13px;
 	font-weight: bold;
 	padding-left: 6px;
+}
+
+input{
+	margin-left: 20px;
 }
