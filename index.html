@@ -15,7 +15,21 @@
 
     <div class = "UserFeed container">
       <h3 class = "UserHeader"></h3>
-      <p class = "UserButton">Click Here To Go Back To Home Feed</p>
+      <p class = "UserButton Button">Click Here To Go Back To Home Feed</p>
+    </div>
+
+    <div class = startButton>
+      <p class = "Button" id = "startTweeting">Click Here To Start Twitting</p>
+    </div>
+
+    <div class = 'NameEntry'>
+      <input id = "Username" placeholder = "Username Here"></input>
+      <div class = "Button" id = "UsernameButton">Enter</div>
+    </div>
+
+    <div class = 'TweetButton'>
+      <input id = "tweet"></input>
+      <div id = "TweetButton" class = "Button">Tweet This</div>
     </div>
 
 
@@ -27,11 +41,33 @@
         var $userFeed = $('.UserFeed');
         var $userHeader = $('.UserHeader');
         $userFeed.hide();
+        $('.NameEntry').hide();
+        $('.TweetButton').hide();
+        var vistor;
+
+
+
+      $('p#startTweeting').on('click', function(){
+        $('.startButton').fadeOut(600);
+        $('.NameEntry').slideDown(600);
+      })
+
+      $('div#UsernameButton').on('click', function(){
+        visitor = $('input#Username').val();
+        streams.users[visitor] = [];
+        $('div.NameEntry').slideUp(600);
+        $('div.TweetButton').slideDown(600);
+      })
+
+
+        $('#TweetButton').on('click', function(){
+          var input = $('input#tweet').val();
+          writeTweet(input);
+        });
+
         startTwit();
-        
 
         function startTwit(){
-
           var counter = 0;
           var $section = $('<section></section');
           $section.appendTo('body');
@@ -96,7 +132,6 @@
               $userTweetTime.appendTo($userTweet);
               $userTweet.hide();
               $userTweet.fadeIn(2000);
-              $('h4').on('click', showUser);
             }
           }
         }
@@ -107,7 +142,6 @@
           $userFeed.slideUp(600);
           startTwit();
         }
-
       });
 
     </script>
